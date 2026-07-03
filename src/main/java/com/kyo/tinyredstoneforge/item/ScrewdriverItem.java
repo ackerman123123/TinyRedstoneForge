@@ -1,7 +1,10 @@
 package com.kyo.tinyredstoneforge.item;
 
 import com.kyo.tinyredstoneforge.blockentity.PanelBlockEntity;
+import com.kyo.tinyredstoneforge.component.PanelComponent;
+import com.kyo.tinyredstoneforge.component.input.LeverComponent;
 import com.kyo.tinyredstoneforge.component.registry.ComponentTypes;
+import com.kyo.tinyredstoneforge.panel.PanelCell;
 import com.kyo.tinyredstoneforge.placement.PlacementContext;
 import com.kyo.tinyredstoneforge.placement.PlacementManager;
 import com.kyo.tinyredstoneforge.placement.PlacementResult;
@@ -30,6 +33,21 @@ public class ScrewdriverItem extends Item {
 
         if (!(blockEntity instanceof PanelBlockEntity panel)) {
             return InteractionResult.PASS;
+        }
+
+        PanelCell cell = panel.engine().grid().getCell(0, 0);
+
+        if (!cell.isEmpty()) {
+            PanelComponent component = cell.getComponent();
+
+            if (component instanceof LeverComponent lever) {
+                lever.toggle();
+                panel.setChanged();
+                panel.engine().signals().markDirty();
+                return InteractionResult.SUCCESS;
+            }
+
+            return InteractionResult.FAIL;
         }
 
         PlacementContext placementContext = new PlacementContext(
