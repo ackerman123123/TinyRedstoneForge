@@ -1,6 +1,7 @@
 package com.kyo.tinyredstoneforge.component.input;
 
 import com.kyo.tinyredstoneforge.component.PanelComponent;
+import net.minecraft.nbt.CompoundTag;
 
 public class LeverComponent extends PanelComponent {
     private boolean powered;
@@ -24,5 +25,15 @@ public class LeverComponent extends PanelComponent {
 
     public int getSignalStrength() {
         return powered ? 15 : 0;
+    }
+
+    @Override
+    public void save(CompoundTag tag) {
+        tag.putBoolean("powered", powered);
+    }
+
+    @Override
+    public void load(CompoundTag tag) {
+        powered = tag.getBoolean("powered").orElse(false);
     }
 }

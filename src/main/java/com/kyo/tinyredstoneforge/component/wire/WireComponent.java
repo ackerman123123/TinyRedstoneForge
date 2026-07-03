@@ -1,6 +1,7 @@
 package com.kyo.tinyredstoneforge.component.wire;
 
 import com.kyo.tinyredstoneforge.component.PanelComponent;
+import net.minecraft.nbt.CompoundTag;
 
 public class WireComponent extends PanelComponent {
     private int signalStrength;
@@ -24,5 +25,15 @@ public class WireComponent extends PanelComponent {
 
     public boolean isPowered() {
         return signalStrength > 0;
+    }
+
+    @Override
+    public void save(CompoundTag tag) {
+        tag.putInt("signalStrength", signalStrength);
+    }
+
+    @Override
+    public void load(CompoundTag tag) {
+        signalStrength = tag.getInt("signalStrength").orElse(0);
     }
 }

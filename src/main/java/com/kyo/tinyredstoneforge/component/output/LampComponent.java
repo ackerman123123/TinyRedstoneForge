@@ -1,6 +1,7 @@
 package com.kyo.tinyredstoneforge.component.output;
 
 import com.kyo.tinyredstoneforge.component.PanelComponent;
+import net.minecraft.nbt.CompoundTag;
 
 public class LampComponent extends PanelComponent {
     private int inputSignal;
@@ -24,5 +25,15 @@ public class LampComponent extends PanelComponent {
 
     public boolean isLit() {
         return inputSignal > 0;
+    }
+
+    @Override
+    public void save(CompoundTag tag) {
+        tag.putInt("inputSignal", inputSignal);
+    }
+
+    @Override
+    public void load(CompoundTag tag) {
+        inputSignal = tag.getInt("inputSignal").orElse(0);
     }
 }
