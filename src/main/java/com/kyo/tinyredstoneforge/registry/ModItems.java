@@ -1,6 +1,7 @@
 package com.kyo.tinyredstoneforge.registry;
 
 import com.kyo.tinyredstoneforge.TinyRedstoneForge;
+import com.kyo.tinyredstoneforge.item.ScrewdriverItem;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.registries.DeferredRegister;
@@ -15,7 +16,7 @@ public final class ModItems {
             () -> new BlockItem(ModBlocks.PANEL.get(), new Item.Properties().setId(ITEMS.key("panel"))));
 
     public static final RegistryObject<Item> SCREWDRIVER = ITEMS.register("screwdriver",
-            () -> new Item(new Item.Properties().setId(ITEMS.key("screwdriver")).stacksTo(1)));
+            () -> new ScrewdriverItem(new Item.Properties().setId(ITEMS.key("screwdriver")).stacksTo(1)));
 
     private ModItems() {}
 }
