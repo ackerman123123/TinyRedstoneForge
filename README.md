@@ -1,42 +1,23 @@
 # TinyRedstoneForge
 
-TinyRedstoneForge is an open-source recreation of Tiny Redstone for **Minecraft 1.21.6** using **Forge 26.1.2**.
+Forge implementation inspired by Tiny Redstone.
 
-## Project Goals
+## Minecraft
+Forge 26.1.2
 
-- Recreate Tiny Redstone mechanics
-- Full multiplayer support
-- High performance
-- Modular architecture
-- Open source
+## Status
 
-## Current Progress
+🚧 In Development
 
-- Panel Engine
-- Component Registry
-- Lever
-- Lamp
-- Wire
-- Placement System
-- Signal Engine
-- NBT Saving
+## Roadmap
 
-## Planned
+- [x] Project initialized
+- [ ] Registries
+- [ ] Panel
+- [ ] Wire
+- [ ] Logic Gates
+- [ ] Multiplayer
 
-- Renderer
-- Networking
-- GUI
-- Repeater
-- Comparator
-- Display
-- Blueprint System
+## Goal
 
-## Repository Structure
-
-docs/
-src/
-gradle/
-
-## License
-
-MIT (planned)
+Create a Forge implementation inspired by Tiny Redstone while keeping full multiplayer compatibility.
