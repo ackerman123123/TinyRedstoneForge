@@ -1,5 +1,7 @@
 package com.kyo.tinyredstoneforge.component;
 
+import net.minecraft.nbt.CompoundTag;
+
 public abstract class PanelComponent {
     private int x;
     private int y;
@@ -23,4 +25,10 @@ public abstract class PanelComponent {
     }
 
     public abstract String getId();
+
+    public void save(CompoundTag tag) {
+    }
+
+    public void load(CompoundTag tag) {
+    }
 }
