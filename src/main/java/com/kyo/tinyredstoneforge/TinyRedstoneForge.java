@@ -1,5 +1,9 @@
 package com.kyo.tinyredstoneforge;
 
+import com.kyo.tinyredstoneforge.registry.ModBlockEntities;
+import com.kyo.tinyredstoneforge.registry.ModBlocks;
+import com.kyo.tinyredstoneforge.registry.ModItems;
+import com.kyo.tinyredstoneforge.registry.ModTabs;
 import com.mojang.logging.LogUtils;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
@@ -15,6 +19,11 @@ public final class TinyRedstoneForge {
         var modBusGroup = context.getModBusGroup();
 
         FMLCommonSetupEvent.getBus(modBusGroup).addListener(this::commonSetup);
+
+        ModBlocks.BLOCKS.register(modBusGroup);
+        ModItems.ITEMS.register(modBusGroup);
+        ModTabs.TABS.register(modBusGroup);
+        ModBlockEntities.BLOCK_ENTITIES.register(modBusGroup);
 
         LOGGER.info("Tiny Redstone Forge loaded");
     }
