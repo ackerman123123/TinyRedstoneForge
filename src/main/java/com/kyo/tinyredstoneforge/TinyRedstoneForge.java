@@ -1,5 +1,6 @@
 package com.kyo.tinyredstoneforge;
 
+import com.kyo.tinyredstoneforge.component.registry.ComponentTypes;
 import com.kyo.tinyredstoneforge.registry.ModBlockEntities;
 import com.kyo.tinyredstoneforge.registry.ModBlocks;
 import com.kyo.tinyredstoneforge.registry.ModItems;
@@ -24,6 +25,8 @@ public final class TinyRedstoneForge {
         ModItems.ITEMS.register(modBusGroup);
         ModTabs.TABS.register(modBusGroup);
         ModBlockEntities.BLOCK_ENTITIES.register(modBusGroup);
+
+        ComponentTypes.init();
 
         LOGGER.info("Tiny Redstone Forge loaded");
     }
