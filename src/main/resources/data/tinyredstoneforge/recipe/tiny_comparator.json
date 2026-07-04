@@ -1,0 +1,12 @@
+﻿{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    "minecraft:comparator",
+    "tinyredstoneforge:silicon"
+  ],
+  "result": {
+    "id": "tinyredstoneforge:tiny_comparator",
+    "count": 8
+  }
+}
+

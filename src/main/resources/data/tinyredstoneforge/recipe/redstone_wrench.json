@@ -1,0 +1,16 @@
+﻿{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "  R",
+    " S ",
+    "S  "
+  ],
+  "key": {
+    "R": "minecraft:redstone",
+    "S": "minecraft:stick"
+  },
+  "result": {
+    "id": "tinyredstoneforge:redstone_wrench"
+  }
+}
+

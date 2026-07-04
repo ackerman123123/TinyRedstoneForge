@@ -1,0 +1,12 @@
+﻿{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    "minecraft:redstone_torch",
+    "tinyredstoneforge:silicon"
+  ],
+  "result": {
+    "id": "tinyredstoneforge:tiny_redstone_torch",
+    "count": 8
+  }
+}
+
