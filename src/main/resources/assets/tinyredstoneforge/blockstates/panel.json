@@ -1,7 +1,7 @@
-﻿{
+{
   "variants": {
     "": {
-      "model": "tinyredstoneforge:block/panel"
+      "model": "tinyredstoneforge:block/redstone_panel"
     }
   }
 }
