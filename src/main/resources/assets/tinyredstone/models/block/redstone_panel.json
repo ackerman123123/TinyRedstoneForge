@@ -1,0 +1,20 @@
+{
+  "textures": {
+    "panel": "tinyredstone:block/redstone_panel",
+    "particle": "tinyredstone:block/redstone_panel"
+  },
+  "elements": [
+    {
+      "from": [0, 0, 0],
+      "to": [16, 2, 16],
+      "faces": {
+        "down": { "texture": "#panel" },
+        "up": { "texture": "#panel" },
+        "north": { "texture": "#panel" },
+        "south": { "texture": "#panel" },
+        "west": { "texture": "#panel" },
+        "east": { "texture": "#panel" }
+      }
+    }
+  ]
+}
