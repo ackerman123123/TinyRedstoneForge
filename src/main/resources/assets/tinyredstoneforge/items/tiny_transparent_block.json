@@ -1,0 +1,9 @@
+﻿{
+  "model": {
+    "type": "minecraft:special",
+    "base": "tinyredstoneforge:item/tiny_transparent_block",
+    "model": {
+      "type": "tinyredstoneforge:tiny_block"
+    }
+  }
+}
