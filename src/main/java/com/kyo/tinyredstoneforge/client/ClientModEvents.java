@@ -22,6 +22,6 @@ public final class ClientModEvents {
 
     @SubscribeEvent
     public static void registerRenderers(EntityRenderersEvent.RegisterRenderers event) {
-        // Renderer registration will be added after API check.
+        event.registerBlockEntityRenderer(ModBlockEntities.PANEL.get(), PanelBlockEntityRenderer::new);
     }
 }

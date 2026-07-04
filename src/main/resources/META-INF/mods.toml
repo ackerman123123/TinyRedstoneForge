@@ -9,9 +9,9 @@ license="All Rights Reserved"
 #clientSideOnly=true #optional, default=false
 
 [[mods]]
-modId="tinyredstoneforge"
+modId="tinyredstone"
 version="0.1"
-displayName="Tiny Redstone Forge"
+displayName="Tiny Redstone"
 #updateJSONURL="https://example.com/updates.json" #optional
 #displayURL="https://example.com/" #optional
 #logoFile="examplemod.png" #optional
@@ -19,17 +19,16 @@ displayName="Tiny Redstone Forge"
 authors="Kyo" #optional
 #displayTest="MATCH_VERSION" #optional, default=MATCH_VERSION when not clientSideOnly, else IGNORE_ALL_VERSION
 
-description='''Tiny Redstone for Forge.
-Newline characters can be used like this, and rendered on the mods screen properly.'''
+description='''Tiny Redstone for Forge.'''
 
-[[dependencies.examplemod]] #recommended
+[[dependencies.tinyredstone]] #recommended
     modId="forge"
     mandatory=true
     versionRange="[64,)"
     ordering="NONE"
     side="BOTH"
 
-[[dependencies.examplemod]] #recommended
+[[dependencies.tinyredstone]] #recommended
     modId="minecraft"
     mandatory=true
     versionRange="[26.1.2,26.2,)"

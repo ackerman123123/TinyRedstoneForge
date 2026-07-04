@@ -13,9 +13,9 @@ public final class ModBlocks {
     public static final DeferredRegister<Block> BLOCKS =
             DeferredRegister.create(ForgeRegistries.BLOCKS, TinyRedstoneForge.MODID);
 
-    public static final RegistryObject<Block> PANEL = BLOCKS.register("panel",
+    public static final RegistryObject<Block> PANEL = BLOCKS.register("redstone_panel",
             () -> new PanelBlock(BlockBehaviour.Properties.of()
-                    .setId(BLOCKS.key("panel"))
+                    .setId(BLOCKS.key("redstone_panel"))
                     .mapColor(MapColor.METAL)
                     .strength(1.5F, 6.0F)));
 

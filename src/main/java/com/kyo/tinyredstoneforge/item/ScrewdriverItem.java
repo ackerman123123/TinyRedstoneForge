@@ -2,22 +2,19 @@ package com.kyo.tinyredstoneforge.item;
 
 import com.kyo.tinyredstoneforge.blockentity.PanelBlockEntity;
 import com.kyo.tinyredstoneforge.component.PanelComponent;
-import com.kyo.tinyredstoneforge.component.input.LeverComponent;
-import com.kyo.tinyredstoneforge.component.registry.ComponentTypes;
+import com.kyo.tinyredstoneforge.component.output.LampComponent;
+import com.kyo.tinyredstoneforge.component.wire.WireComponent;
+import com.kyo.tinyredstoneforge.panel.PanelCellSegment;
+import com.kyo.tinyredstoneforge.panel.PanelHitLocation;
 import com.kyo.tinyredstoneforge.panel.PanelCell;
-import com.kyo.tinyredstoneforge.placement.PlacementContext;
-import com.kyo.tinyredstoneforge.placement.PlacementManager;
-import com.kyo.tinyredstoneforge.placement.PlacementResult;
-import com.kyo.tinyredstoneforge.placement.Rotation;
 import net.minecraft.core.BlockPos;
+import net.minecraft.network.chat.Component;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.block.entity.BlockEntity;
 
 public class ScrewdriverItem extends Item {
-    private final PlacementManager placementManager = new PlacementManager();
-
     public ScrewdriverItem(Properties properties) {
         super(properties);
     }
@@ -35,33 +32,50 @@ public class ScrewdriverItem extends Item {
             return InteractionResult.PASS;
         }
 
-        PanelCell cell = panel.engine().grid().getCell(0, 0);
+        int x = PanelInteraction.cellX(context, panel);
+        int y = PanelInteraction.cellY(context, panel);
+        PanelCell cell = panel.engine().grid().getCell(x, y);
 
-        if (!cell.isEmpty()) {
-            PanelComponent component = cell.getComponent();
+        if (cell.isEmpty()) {
+            return InteractionResult.PASS;
+        }
 
-            if (component instanceof LeverComponent lever) {
-                lever.toggle();
-                panel.setChanged();
-                panel.engine().signals().markDirty();
+        PanelComponent component = cell.getComponent();
+
+        if (context.getPlayer() != null && context.getPlayer().isCrouching()) {
+            cell.clear();
+            PanelInteraction.sync(panel);
+            context.getPlayer().sendSystemMessage(Component.literal("Removed component at " + x + ", " + y));
+            return InteractionResult.SUCCESS;
+        }
+
+        if (context.getPlayer() != null) {
+            PanelHitLocation hit = PanelHitLocation.fromHit(panel, new net.minecraft.world.phys.BlockHitResult(
+                    context.getClickLocation(),
+                    context.getClickedFace(),
+                    context.getClickedPos(),
+                    context.isInside()
+            ));
+
+            if (hit != null && component.hasActivation(context.getPlayer())) {
+                if (component.onBlockActivated(hit.segment(), context.getPlayer())) {
+                    PanelInteraction.sync(panel);
+                    context.getPlayer().sendSystemMessage(Component.literal("Activated " + component.getId()));
+                    return InteractionResult.SUCCESS;
+                }
+            }
+
+            if (component instanceof WireComponent wire) {
+                context.getPlayer().sendSystemMessage(Component.literal("Wire signal: " + wire.getSignalStrength()));
                 return InteractionResult.SUCCESS;
             }
 
-            return InteractionResult.FAIL;
+            if (component instanceof LampComponent lamp) {
+                context.getPlayer().sendSystemMessage(Component.literal("Lamp " + (lamp.isLit() ? "lit" : "off") + " (" + lamp.getInputSignal() + ")"));
+                return InteractionResult.SUCCESS;
+            }
         }
 
-        PlacementContext placementContext = new PlacementContext(
-                panel,
-                ComponentTypes.LEVER,
-                0,
-                0,
-                Rotation.NORTH
-        );
-
-        PlacementResult result = placementManager.place(placementContext);
-
-        return result == PlacementResult.SUCCESS
-                ? InteractionResult.SUCCESS
-                : InteractionResult.FAIL;
+        return InteractionResult.PASS;
     }
 }

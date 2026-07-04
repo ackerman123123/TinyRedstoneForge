@@ -13,11 +13,23 @@ public final class ModTabs {
 
     public static final RegistryObject<CreativeModeTab> MAIN_TAB = TABS.register("main",
             () -> CreativeModeTab.builder()
-                    .title(Component.translatable("itemGroup.tinyredstoneforge"))
+                    .title(Component.translatable("itemGroup.tinyredstone"))
                     .icon(() -> ModItems.SCREWDRIVER.get().getDefaultInstance())
                     .displayItems((params, output) -> {
                         output.accept(ModItems.PANEL.get());
                         output.accept(ModItems.SCREWDRIVER.get());
+                        output.accept(ModItems.TINY_LEVER.get());
+                        output.accept(ModItems.TINY_WIRE.get());
+                        output.accept(ModItems.TINY_LAMP.get());
+                        output.accept(ModItems.TINY_REDSTONE_BLOCK.get());
+                        output.accept(ModItems.TINY_REDSTONE_TORCH.get());
+                        output.accept(ModItems.TINY_REPEATER.get());
+                        output.accept(ModItems.TINY_BUTTON.get());
+                        output.accept(ModItems.TINY_STONE_BUTTON.get());
+                        output.accept(ModItems.TINY_COMPARATOR.get());
+                        output.accept(ModItems.TINY_REDSTONE_BRIDGE.get());
+                        output.accept(ModItems.TINY_SOLID_BLOCK.get());
+                        output.accept(ModItems.TINY_TRANSPARENT_BLOCK.get());
                     })
                     .build());
 

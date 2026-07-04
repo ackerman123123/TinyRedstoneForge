@@ -2,7 +2,7 @@ package com.kyo.tinyredstoneforge.component;
 
 import net.minecraft.nbt.CompoundTag;
 
-public abstract class PanelComponent {
+public abstract class PanelComponent implements PanelCellBehavior {
     private int x;
     private int y;
 
@@ -25,6 +25,16 @@ public abstract class PanelComponent {
     }
 
     public abstract String getId();
+
+    @Override
+    public int getWeakRsOutput(com.kyo.tinyredstoneforge.panel.Side outputDirection) {
+        return 0;
+    }
+
+    @Override
+    public int getStrongRsOutput(com.kyo.tinyredstoneforge.panel.Side outputDirection) {
+        return 0;
+    }
 
     public void save(CompoundTag tag) {
     }

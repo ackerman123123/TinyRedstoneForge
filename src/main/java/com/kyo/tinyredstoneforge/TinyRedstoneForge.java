@@ -13,7 +13,7 @@ import org.slf4j.Logger;
 
 @Mod(TinyRedstoneForge.MODID)
 public final class TinyRedstoneForge {
-    public static final String MODID = "tinyredstoneforge";
+    public static final String MODID = "tinyredstone";
     public static final Logger LOGGER = LogUtils.getLogger();
 
     public TinyRedstoneForge(FMLJavaModLoadingContext context) {
